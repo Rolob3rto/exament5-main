@@ -49,7 +49,7 @@ public class SecurityConfig {
         return authProvider;
     }
 
-    // @Bean
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http

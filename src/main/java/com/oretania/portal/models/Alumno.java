@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Alumno {
@@ -15,6 +16,11 @@ public class Alumno {
     private String nombre;
     private String email;
     private String telefono;
+    
+    
+    @ManyToMany()
+    private List<Asignatura> asignaturas;
+
 
     private String userName;
     private String password;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <body>
     <div th:fragment="menu">
@@ -13,8 +13,28 @@
                                 href="welcome.html">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" th:href="@{/asignaturas/matematicas}"
+                            <a class="nav-link active" aria-current="page" sec:authorize="hasAnyAthority('MAT', 'ADMIN')" th:href="@{/asignaturas/matematicas}"
                                 href="welcome.html">Matemáticas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" sec:authorize="hasAnyAthority('LEN', 'ADMIN')" th:href="@{/asignaturas/lengua}"
+                                href="welcome.html">Lengua</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" sec:authorize="hasAnyAthority('ING', 'ADMIN')" th:href="@{/asignaturas/ingles}"
+                                href="welcome.html">Ingles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" sec:authorize="hasAnyAthority('REL', 'ADMIN')" th:href="@{/asignaturas/religion}"
+                                href="welcome.html">Religion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" sec:authorize="hasAnyAthority('FIS', 'ADMIN')" th:href="@{/asignaturas/fisica}"
+                                href="welcome.html">Fisica</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" sec:authorize="hasAnyAthority('QUI', 'ADMIN')" th:href="@{/asignaturas/quimica}"
+                                href="welcome.html">Quimica</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" th:href="@{/logout}"><i class="bi bi-box-arrow-left" th:text="logout"></i></a>

@@ -83,10 +83,18 @@ class AlumnoRepositoryTests {
 		asignaturaAlumno1.add(a2);
 		asignaturaAlumno1.add(a3);
 
+		List<Asignatura> asignaturaAlumno2 = new ArrayList<Asignatura>();
+		asignaturaAlumno2.add(a3);
+		asignaturaAlumno2.add(a4);
+		asignaturaAlumno2.add(a1);
+
 		u1.setAsignaturas(asignaturaAlumno1);
+		u2.setAsignaturas(asignaturaAlumno2);
 
 
 		Alumno u1OK = repoAlumno.save(u1);
+		Alumno u2OK = repoAlumno.save(u2);
+		Alumno u3OK = repoAlumno.save(u3);
 
 		assertTrue(a6.getDescrripcion().equalsIgnoreCase("QUI"));
 	}
