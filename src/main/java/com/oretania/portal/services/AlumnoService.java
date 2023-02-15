@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ import com.oretania.portal.models.Asignatura;
 import com.oretania.portal.repositories.AlumnoRepository;
 
 @Service
-public class AlumnoService {
+public class AlumnoService implements UserDetailsService {
     
 
     @Autowired
@@ -25,9 +26,9 @@ public class AlumnoService {
     public List<Alumno> findAll(){
         return null;
     }
-    
-    public UserDetails loadUserByUserName(String username) throws UsernameNotFoundException{
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Alumno alumno = repository.findByUserName(username);
 
         List<Asignatura> asignaturas = alumno.getAsignaturas();
@@ -43,5 +44,6 @@ public class AlumnoService {
             .build();
         return user;
     }
+
 
 }

@@ -12,6 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.oretania.portal.services.AlumnoService;
+
 @Configuration
 public class SecurityConfig {
 
@@ -19,6 +21,11 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
         // return NoOpPasswordEncoder.getInstance();
+    }
+
+    @Bean
+    AlumnoService myUserService(){
+        return new AlumnoService();
     }
 
 
@@ -43,7 +50,7 @@ public class SecurityConfig {
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 
-        authProvider.setUserDetailsService(users());
+        authProvider.setUserDetailsService( myUserService());
         authProvider.setPasswordEncoder(passwordEncoder());
 
         return authProvider;
